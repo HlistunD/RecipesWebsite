@@ -13,7 +13,7 @@ export default function myRecipesComponent({label, image, calories, ingredients}
 
         <ul className="list">
             {ingredients.map(ingredient => (
-                <li><img src={chek} alt="checkM" className="icon" width="32px"/>{ingredient}</li>
+                <li><img src={chek} alt="checkM" className="icon" width="20px"/>{ingredient}</li>
             ))}
         </ul>
 

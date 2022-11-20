@@ -17,6 +17,7 @@ useEffect(() => {
   const getResult = async() => {
   const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${wordSub}&app_id=${MY_ID}&app_key=${MY_KEY}`);
   const data = await response.json();
+  console.log(data)
   setMyRecipes(data.hits);
   }
   getResult();
@@ -53,16 +54,15 @@ return(<div className="App">
   </button>
 </div>
 
-<div>
-{myRecipes.map(element => (
-  <MyRecipesComponent 
+<div className="recipes div">
+{myRecipes.map((element, index) => (
+  <MyRecipesComponent key={index}
   label={element.recipe.label} 
   image={element.recipe.image} 
   calories={element.recipe.calories}
-  ingredients={element.recipe.ingredientsLines}/>
+  ingredients={element.recipe.ingredientLines}/>
 ))}
 </div>
-
   </div>
 )
 }
