@@ -1,68 +1,69 @@
-import "./App.css";
 import { useEffect, useState } from "react";
-import video from "./food.mp4";
-import search from "./search.png";
-import MyRecipesComponent from "./MyRecipesComponent";
+import "./App.css";
+import video from "./Cook.mp4";
+import arrow from "./arrow.png";
+import Recipies from "./Recipies";
 
 export default function App() {
 
-const MY_ID = "7dfe2c77";
-const MY_KEY = "ece7be3b8975991aa4a297268d004c6e";
+  const MY_ID = "7dfe2c77";
+  const MY_KEY = "ece7be3b8975991aa4a297268d004c6e";
 
-const [mySearch, setMySearch] = useState("");
-const [myRecipes, setMyRecipes] = useState([]);
-const [wordSub, setWordSub] = useState ("avocado");
+  const [mySearch, setMySearch] = useState ("");
+  const [showRecipes, setShowResipes] = useState([]);
+  const [wordSub, setWordSub] = useState ("avocado");
 
-useEffect(() => {
-  const getResult = async() => {
-  const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${wordSub}&app_id=${MY_ID}&app_key=${MY_KEY}`);
-  const data = await response.json();
-  console.log(data)
-  setMyRecipes(data.hits);
+  useEffect (() => {
+    async function catchFetch() {
+    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${wordSub}&app_id=${MY_ID}&app_key=${MY_KEY}`);
+    const data = await response.json();
+    setShowResipes(data.hits)
   }
-  getResult();
-  }, [wordSub]);
+    catchFetch()
+  }, [wordSub])
 
   const myRecipeSearch = (e) => {
-    console.log(e.target.value)
-    setMySearch(e.target.value);
+  setMySearch(e.target.value)
   }
 
-  const finalSearch = (e) => {
-    e.preventDefault();
-    setWordSub(mySearch);
+const finalSearch = (e) => {
+e.preventDefault();
+setWordSub(mySearch);
 }
 
-return(<div className="App"> 
-
-<div className="container">
-  <video autoPlay muted loop>
-  <source alt="myVideo" src={video} type="video/mp4"/>
-  </video>
-    <h1>Find a Recipe</h1>
-</div>
-
-<div className="container">
-  <form onSubmit={finalSearch}>
-<input className="search" placeholder="Put your ingridient..." type="text" onChange={myRecipeSearch} value={mySearch}/>
-  </form>
-</div>
-
-<div className="container">
-  <button>
-  <img alt="search" src={search} className="icons" width="35px" />
-  </button>
-</div>
-
-<div className="recipes div">
-{myRecipes.map((element, index) => (
-  <MyRecipesComponent key={index}
-  label={element.recipe.label} 
-  image={element.recipe.image} 
-  calories={element.recipe.calories}
-  ingredients={element.recipe.ingredientLines}/>
-))}
-</div>
+  return(
+  <div className="App">
+    <div className="container">
+      <video autoPlay muted loop>
+        <source src={video} type="video/mp4"/>
+      </video>
+      <h1>Let's find your recipe</h1>
   </div>
-)
+
+    <div className="container">
+      <form onSubmit={finalSearch}> 
+        <input placeholder="Pet here your prodact..." className="search" onChange={myRecipeSearch} value={mySearch}/>
+      </form>
+      <button className="icon">
+        <img src={arrow} alt="arrow" width="30px" />
+      </button>
+    </div>
+
+    <div>
+      {showRecipes.map((element, index) => (
+        <Recipies key={index}
+        label={element.recipe.label}
+        image={element.recipe.image}
+        cousin={element.recipe.cuisineType}
+        time={element.recipe.totalTime}
+        ingredients={element.recipe.ingredientLines}
+        />
+      ))}
+    </div>
+
+
+
+
+    </div>
+  )
 }
