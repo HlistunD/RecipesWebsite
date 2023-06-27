@@ -1,3 +1,4 @@
+import { StickyNote } from "./StickyNote";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import knife from "./media/knife.jpg";
@@ -7,9 +8,9 @@ import breakfast from "./media/breakfast.jpg";
 
 
 
-export function Articles() {
+export default function Articles() {
     return (
-        <div className='articlesCont wrapperArt'>
+        <div className='articlesCont'>
             <Card className='card One'>
                 <Card.Img variant="top" src={meat} alt='knife_pic' className='meatPic' />
                 <Card.Body>
@@ -26,9 +27,12 @@ export function Articles() {
                         href="https://therecipecritic.com/worlds-best-steak-marinade/"
                         size="lg"
                         target="_blank"
-                        > Read more </Button>{' '}
+                    > Read more </Button>{' '}
                 </Card.Body>
             </Card>
+            <div className='stickyCompon'>
+                <StickyNote />
+            </div>
             <Card className='card Two'>
                 <Card.Img variant="top" src={knife} alt='knife_pic' className='knifePic' />
                 <Card.Body>
@@ -41,23 +45,22 @@ export function Articles() {
                         href="https://www.prolinerangehoods.com/blog/how-long-do-kitchen-knives-last/#:~:text=Over%20time%2C%20the%20tip%20of,condition%2C%20be%20gentle%20when%20cutting."
                         size="lg"
                         target="_blank"
-                        > Read more </Button>{' '}
+                    > Read more </Button>{' '}
                 </Card.Body>
             </Card>
             <Card className='card Three'>
                 <Card.Img variant="top" src={cocktails} alt='knife_pic' className='cocktailsPic' />
                 <Card.Body>
-                    <Card.Title className='cardTitle'>Top 10 easy summer cocktails...</Card.Title>
+                    <Card.Title className='cardTitle'>Top 10 easy summer cocktails you can make at home...</Card.Title>
                     <Card.Text className='cardText'>
-                        Cool off when the weather turns hot with one of our
-                        thirst-quenching summer cocktail recipes. Try a fruity punch,
-                        sangria with a twist, or a refreshing spritz.
+                    We've scoured our site and done a deep dive into the nitty gritty data to find your 
+                    all-time favourite summer cocktail recipes. Discover how to make delicious ...
                     </Card.Text>
                     <Button className='btnLink'
-                        href="https://firstwefeast.com/drink/10-easy-cocktail-recipes/"
+                        href="https://www.bbcgoodfood.com/howto/guide/top-10-summer-cocktail-recipes"
                         size="lg"
                         target="_blank"
-                        > Read more </Button>{' '}
+                    > Read more </Button>{' '}
                 </Card.Body>
             </Card>
             <Card className='card Four'>
@@ -72,10 +75,9 @@ export function Articles() {
                         href="https://thewholeu.uw.edu/2021/12/20/what-does-a-healthy-breakfast-look-like/"
                         size="lg"
                         target="_blank"
-                        > Read more </Button>{' '}
+                    > Read more </Button>{' '}
                 </Card.Body>
             </Card>
         </div>
     );
 }
-export default Articles;

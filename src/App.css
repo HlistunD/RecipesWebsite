@@ -3,11 +3,6 @@
     padding: 0;
 }
 
-.componentsDirect {
-    display: flex;
-    justify-content: space-around;
-}
-
 .background {
     object-fit: cover;
     width: 100vw;
@@ -55,26 +50,32 @@
 .listOfTop h3 {
     display: flex;
     align-items: center;
-
 }
+
 
 .articlesCont {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2%;
-    padding: 4%;
+    padding: 3% 0 3% 3%;
 }
 
-.articlesCont .One {
-    grid-column: 1 / span 4;
-    max-width: 67rem;
+.One {
+    grid-column: 1 / span 3;
+    max-width: 68rem;
     height: fit-content;
 }
 
-.articlesCont .Two,
-.articlesCont .Three,
-.articlesCont .Four {
-    max-width: 80%;
+.stickyCompon {
+    grid-column: 4 / span 5;
+    max-width: 68rem;
+    height: fit-content;
+}
+
+.Two,
+.Three,
+.Four {
+    max-width: 100%;
     height: fit-content;
     grid-column: span 1;
 }
@@ -126,7 +127,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    margin: 3% 0 0 -7%;
+    margin: 2% 0 0 0%;
 }
 
 .sticky-container {
@@ -169,7 +170,6 @@
     align-items: center;
     font-family: 'Kalam', cursive;
     font-size: 1.25rem;
-
     clip-path: url(#stickyClip);
 }
 
@@ -191,8 +191,8 @@
 }
 
 .container-inner {
-    width: 50%;
-    margin: 1.8rem;
+    width: 70%;
+    margin: 4% 5% 4% 0%;
 }
 
 .FindRecipeCont {
@@ -219,23 +219,27 @@
 
 .input-container input {
     flex-grow: 1;
-    padding-right: 30px;
+    padding-right: 2rem;
+    
 }
-
-.input-container .icon {
-    margin: 1%;
+.btnSearch {
     cursor: pointer;
-    width: 5%;
-    height: 5%;
+    border-left: none;
+    border: 0.5px solid #5697c26d ;
+}
+.btnSearch img{
+    padding: 0.5rem;
 }
 
 .container input {
     border-color: white;
+    border: 0.5px solid #5697c26d ;
+
 }
 
 .search {
     width: 100%;
-    padding: 15px 24px;
+    padding: 1rem 1.5rem;
     font-size: 1rem;
     line-height: 18px;
     background-color: white;
@@ -305,36 +309,48 @@ ul {
 }
 
 .displayRecipe {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 5%;
-}
-
-.list {
     display: flex;
     flex-wrap: wrap;
-    list-style-type: circle;
-    font-size: 1.1rem;
-    padding: 5%;
+    justify-content: space-evenly;
 }
 
-.list li {
-    line-height: 1.5rem;
+.cardRecipe {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    margin: 2% 5% 1% 5% ;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
 }
 
 .label {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
     font-weight: bold;
     color: #354855;
-    margin: 5% 0 1% 0;
 }
 
+.list-group-item {
+    font-size: 14px;
+}
 
+.list {
+    margin-top: 1rem;
+    padding-left: 0;
+    font-size: 1rem;
+}
 
-
-
-
-
+.list li {
+    list-style-type: disc;
+    margin-left: 1.2rem;
+    line-height: 1.5rem;
+}
 
 
 @media (max-width: 768px) {
@@ -349,6 +365,14 @@ ul {
 
     .listOfTop span {
         font-size: 1.2rem;
+    }
+
+    .articlesCont{
+        
+    }
+
+    .cardRecipe {
+        width: 100%;
     }
 }
 
@@ -365,131 +389,22 @@ ul {
     .listOfTop span {
         font-size: 1rem;
     }
-}
-
-/*
-@media screen and (max-width: 768px) {
-    .listOfTop {
-        display: flex;
+    .stickyCompon{
+        display: none;
     }
-
-    .listOfTop li {
-        font-size: 1rem;
-    }
-
-    .listOfTop li span {
-        font-size: 1rem;
-    }
-
-    .articlesCont {
-        display: grid;
-        gap: 5%;
-        grid-template-columns: [col1-start] 12.5rem [col2-start] 12.5rem [col3-start] 12.5rem [col3-end];
-        grid-template-rows: [row1-start] 40rem [row2-start] 44rem [row2-end];
-        justify-content: center;
-        margin: 0;
-    }
-
-    .articlesCont .One {
-        width: 40rem;
-        height: fit-content;
-    }
-
-    .articlesCont .Two,
-    .Three,
-    .Four {
-        width: 10rem;
-        height: fit-content;
-    }
-
-    .meatPic {
-        width: 40rem;
-        height: auto;
-    }
-
-    .cocktailsPic,
-    .breakfastPic,
-    .knifePic {
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: 42rem;
-    }
-
-    .cardTitle {
-        font-weight: bold;
-    }
-
-    .meatTitle {
-        margin-top: 1.5%;
-    }
-
-    .btnLink {
-        color: #5697c2;
-        text-decoration: none;
-    }
-
-    .btnLink:hover {
-        text-decoration: underline;
-    }
-
-    .cardText {
-        font-size: 1rem;
-        margin: 1rem 0;
-        line-height: 1.3rem;
-    }
-
-    .componentsDirect {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    .stickyGroup {
-        display: flex;
-        flex-direction: row;
-        margin: 0;
-    }
-
-    .displayRecipe {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media screen and (max-width: 480px) {
-
-    .articlesCont {
+    .articlesCont{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 1rem;
+        gap:1rem;
     }
-
-    .articlesCont .Two,
-    .Three,
-    .Four,
-    .articlesCont .One {
-        margin: 2%;
-        width: 25rem;
-        height: fit-content;
+    .listOfPopular{
+        display: flex;
+        flex-direction: column;
     }
-
-    .meatPic {
-        width: 25rem;
-        height: auto;
-    }
-
-    .sticky-container {
-        width: 7.5rem;
-    }
-
-    .container-inner {
-        margin: 1rem 0 2.5rem 1rem;
-    }
-
-    .sticky-content {
-        font-size: 1rem;
-        padding: 0.5rem;
+    .cardRecipe{
+        max-width: 15rem;
     }
 }
-*/

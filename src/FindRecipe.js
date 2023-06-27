@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import background from "./media/background.jpg";
-import arrow from "./media/arrow.png";
 import Recipes from "./Recipes";
+import search from "./media/search.png";
 
 
 export default function FindRecipe() {
@@ -54,12 +54,7 @@ export default function FindRecipe() {
                             onChange={myRecipeSearch}
                             value={mySearch}
                         />
-                        <img
-                            src={arrow}
-                            alt="arrow"
-                            className="icon"
-                            onClick={finalSearch}
-                        />
+                        <button className="btnSearch"><img src={search} alt="search"/></button>
                     </div>
                 </form>
                 <div className="wrapperOfPopular">

@@ -3,7 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function Recipes({ label, image, cousin, time, ingredients }) {
    return (
-      <Card 
+      <Card className='cardRecipe'
       style={{ width: '25rem', display:'flex', flexDirection:'column', 
       justifyContent:'flex-start', alignItems:'center'}}
       >
