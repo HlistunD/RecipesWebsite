@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Button from 'react-bootstrap/Button';
 import background from "./media/background.jpg";
 import arrow from "./media/arrow.png";
 import Recipes from "./Recipes";
@@ -42,6 +43,7 @@ export default function FindRecipe() {
                 <img src={background} alt="background" className="background" />
                 <h3>Let's find your recipe</h3>
             </div>
+
             <div className="container">
                 <form onSubmit={finalSearch}>
                     <div className="input-container">
@@ -60,19 +62,32 @@ export default function FindRecipe() {
                         />
                     </div>
                 </form>
+                <div className="wrapperOfPopular">
+                    <h3>Popular Searches</h3>
+                    <ul className="listOfPopular">
+                        <li><Button variant="secondary"><a href="https://www.loveandlemons.com/salad-recipes/">Salads</a></Button>{' '}</li>
+                        <li><Button variant="secondary"><a href="https://www.delish.com/cooking/recipe-ideas/g2894/things-to-do-with-avocado/">Avocado</a></Button>{' '}</li>
+                        <li><Button variant="secondary"><a href="https://www.bonappetit.com/gallery/egg-recipes">Eggs</a></Button>{' '}</li>
+                        <li><Button variant="secondary"><a href="https://www.foodnetwork.com/recipes/photos/50-quick-snack-recipes">Snacks</a></Button>{' '}</li>
+                    </ul>
+                </div>
             </div>
-            {searched && (
-                showRecipes.map((element, index) => (
-                    <Recipes
-                        key={index}
-                        label={element.recipe.label}
-                        image={element.recipe.image}
-                        cousin={element.recipe.cuisineType}
-                        time={element.recipe.totalTime}
-                        ingredients={element.recipe.ingredientLines}
-                    />
-                ))
-            )}
+            <div className="displayRecipe">
+                {searched && (
+                    showRecipes.map((element, index) => (
+                        <Recipes
+                            key={index}
+                            label={element.recipe.label}
+                            image={element.recipe.image}
+                            cousin={element.recipe.cuisineType}
+                            time={element.recipe.totalTime}
+                            ingredients={element.recipe.ingredientLines}
+                        />
+                    ))
+                )}
+            </div>
+
         </div>
+
     )
 }

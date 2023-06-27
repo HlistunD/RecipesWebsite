@@ -1,17 +1,27 @@
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+
 export default function Recipes({ label, image, cousin, time, ingredients }) {
    return (
-      <div className="recipesData">
-         <ul className="container">
-            <li><h4>{label}</h4></li>
-            <li><img src={image} alt="dish" /></li>
-            <li><h5>{cousin} cousin</h5></li>
-            <li><h6>{time} min</h6></li>
-         </ul>
-         <ul className="list">
-            {ingredients.map(ingredient => (
-               <li>{ingredient}</li>
-            ))}
-         </ul>           
-      </div>
-   )
+      <Card 
+      style={{ width: '25rem', display:'flex', flexDirection:'column', 
+      justifyContent:'flex-start', alignItems:'center'}}
+      >
+         <Card.Img variant="top" src={image} alt="dish" />
+         <Card.Body>
+            <Card.Title className='label'>{label}</Card.Title>
+            <ListGroup className="list-group-flush">
+               <ListGroup.Item className='cousin'>{cousin} cousin</ListGroup.Item>
+               <ListGroup.Item className='time'>{time} min</ListGroup.Item>
+            </ListGroup>
+            <Card.Text>
+               <ul className="list">
+                  {ingredients.map(ingredient => (
+                     <li>{ingredient}</li>
+                  ))}
+               </ul>
+            </Card.Text>
+         </Card.Body>
+      </Card>
+   );
 }
